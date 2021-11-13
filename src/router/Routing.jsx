@@ -38,10 +38,10 @@ function Routing() {
 			<>
 				<Switch>
 					<Route path="/norn-notifications" exact component={Home} />
-					<Route path="/login" exact component={Login} />
-					<Route path="/register" exact component={Register} />
-					<PrivateRoute path="/secret" roles={[Role.Graduate, Role.Admin]} exact component={Secret} />
-					<PrivateRoute path="/user" roles={[Role.Admin]} exact component={User} />
+					<Route path="/norn-notifications/login" exact component={Login} />
+					<Route path="/norn-notifications/register" exact component={Register} />
+					<PrivateRoute path="/norn-notifications/secret" roles={[Role.Graduate, Role.Admin]} exact component={Secret} />
+					<PrivateRoute path="/norn-notifications/user" roles={[Role.Admin]} exact component={User} />
 			</Switch>
 		</>
 	)

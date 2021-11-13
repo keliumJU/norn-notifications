@@ -22,16 +22,16 @@ function NavBar() {
 					</Navbar.Brand>
 					</Link>
 					<Nav className="mx-auto">
-						<Link to='/login'>
+						<Link to='/norn-notifications/login'>
 							<Nav.Link href="#login">Login</Nav.Link>
 						</Link>
-						<Link to='/register'>
+						<Link to='/norn-notifications/register'>
 							<Nav.Link href="#Register">Register</Nav.Link>
 						</Link>
-						<Link to='/secret'>
+						<Link to='/norn-notifications/secret'>
 							<Nav.Link href="#Secret">Secret</Nav.Link>
 						</Link>
-						<Link to='/user'>
+						<Link to='/norn-notifications/user'>
 								<Nav.Link href="#User">User</Nav.Link>
 						</Link>
 					</Nav>
