@@ -1,24 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar'
+import Routing from './router/Routing'
+import Footer from './components/Footer'
+import { BrowserRouter as Router } from 'react-router-dom';
+import React,{useState} from 'react';
+import { onMessageListener } from "./firebaseInit";
+import Notifications from "./components/notifications/Notifications";
+import ReactNotificationComponent from "./components/notifications/ReactNotification";
 
 function App() {
+  //config show notifications
+  const [show, setShow] = useState(false);
+  const [notification, setNotification] = useState({ title: "", body: "" });
+
+  console.log(show, notification);
+
+  onMessageListener()
+    .then((payload) => {
+      setShow(true);
+      setNotification({
+        title: payload.notification.title,
+        body: payload.notification.body,
+      });
+      console.log(payload);
+    })
+    .catch((err) => console.log("failed: ", err));
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        {show ? (
+        <ReactNotificationComponent
+          title={notification.title}
+          body={notification.body}
+        />
+        ) : (
+          <></>
+        )}
+      <Notifications />
+        <NavBar />
+        <Routing />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
