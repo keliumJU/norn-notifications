@@ -9,7 +9,7 @@ function NavBar() {
 		<>
 			<Navbar bg="dark" variant="dark">
 				<Container>
-					<Link to='norn-notifications/'>
+					<Link to='/norn-notifications'>
 					<Navbar.Brand href="#home">
 						<img
 							alt=""
