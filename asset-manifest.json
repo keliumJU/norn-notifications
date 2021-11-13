@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/keliumJU/norn-notifications/static/css/main.0d30d307.chunk.css",
+    "main.js": "/keliumJU/norn-notifications/static/js/main.69786d6b.chunk.js",
+    "main.js.map": "/keliumJU/norn-notifications/static/js/main.69786d6b.chunk.js.map",
+    "runtime-main.js": "/keliumJU/norn-notifications/static/js/runtime-main.8283f406.js",
+    "runtime-main.js.map": "/keliumJU/norn-notifications/static/js/runtime-main.8283f406.js.map",
+    "static/css/2.b0ce55e0.chunk.css": "/keliumJU/norn-notifications/static/css/2.b0ce55e0.chunk.css",
+    "static/js/2.728b1757.chunk.js": "/keliumJU/norn-notifications/static/js/2.728b1757.chunk.js",
+    "static/js/2.728b1757.chunk.js.map": "/keliumJU/norn-notifications/static/js/2.728b1757.chunk.js.map",
+    "static/js/3.aaed0534.chunk.js": "/keliumJU/norn-notifications/static/js/3.aaed0534.chunk.js",
+    "static/js/3.aaed0534.chunk.js.map": "/keliumJU/norn-notifications/static/js/3.aaed0534.chunk.js.map",
+    "index.html": "/keliumJU/norn-notifications/index.html",
+    "static/css/2.b0ce55e0.chunk.css.map": "/keliumJU/norn-notifications/static/css/2.b0ce55e0.chunk.css.map",
+    "static/css/main.0d30d307.chunk.css.map": "/keliumJU/norn-notifications/static/css/main.0d30d307.chunk.css.map",
+    "static/js/2.728b1757.chunk.js.LICENSE.txt": "/keliumJU/norn-notifications/static/js/2.728b1757.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/keliumJU/norn-notifications/static/media/logo.6ce24c58.svg",
+    "static/media/noimg.3ca0dfab.jpg": "/keliumJU/norn-notifications/static/media/noimg.3ca0dfab.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8283f406.js",
+    "static/css/2.b0ce55e0.chunk.css",
+    "static/js/2.728b1757.chunk.js",
+    "static/css/main.0d30d307.chunk.css",
+    "static/js/main.69786d6b.chunk.js"
+  ]
+}
