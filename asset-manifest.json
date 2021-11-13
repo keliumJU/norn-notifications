@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/norn-notifications/static/css/main.0d30d307.chunk.css",
-    "main.js": "/norn-notifications/static/js/main.294e3eb0.chunk.js",
-    "main.js.map": "/norn-notifications/static/js/main.294e3eb0.chunk.js.map",
+    "main.js": "/norn-notifications/static/js/main.4feb4a94.chunk.js",
+    "main.js.map": "/norn-notifications/static/js/main.4feb4a94.chunk.js.map",
     "runtime-main.js": "/norn-notifications/static/js/runtime-main.d9527fa3.js",
     "runtime-main.js.map": "/norn-notifications/static/js/runtime-main.d9527fa3.js.map",
     "static/css/2.b0ce55e0.chunk.css": "/norn-notifications/static/css/2.b0ce55e0.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.b0ce55e0.chunk.css",
     "static/js/2.728b1757.chunk.js",
     "static/css/main.0d30d307.chunk.css",
-    "static/js/main.294e3eb0.chunk.js"
+    "static/js/main.4feb4a94.chunk.js"
   ]
 }
