@@ -42,7 +42,7 @@
 <script>
   // register ServiceWorker, remember to use absolute path!
   if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('/norn-notifications/firebase-messaging-sw.js', { scope: '/norn-notifications/' })
+    navigator.serviceWorker.register('./norn-notifications/firebase-messaging-sw.js', { scope: '/norn-notifications/' })
   }
 
     // --- Application code here ---
