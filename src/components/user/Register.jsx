@@ -3,6 +3,7 @@ import '../.././App.css';
 import { Form, Button } from 'react-bootstrap';
 import API from '../../api/api'
 import '../.././App.css';
+import BASE_URL from '../../helpers/api_base'
 
 export default class Register extends React.Component {
 
@@ -38,7 +39,7 @@ export default class Register extends React.Component {
 		console.log(token_fcm)
 		console.log(this.state.nombre)
 
-		fetch(`/api/users/create`, {
+		fetch(`${BASE_URL}api/users/create`, {
 			method: 'POST',
 			body: data,
 		}).then(response => {

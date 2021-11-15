@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import {login, useAuth, logout} from "./../../auth"
 import '../.././App.css';
 import jwt from 'jwt-decode'
-
+import BASE_URL from '../../helpers/api_base'
 function Login() {
 
 	const [username, setUsername] = useState('')
@@ -22,7 +22,7 @@ function Login() {
 			'token_fcm': token_fcm
 		}
 		console.log(opts)
-		fetch('api/users/login', {
+		fetch(`${BASE_URL}api/users/login`, {
 			method: 'post',
 			body: JSON.stringify(opts)
 		}).then(r => r.json())

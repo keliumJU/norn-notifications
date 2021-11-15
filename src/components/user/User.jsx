@@ -10,6 +10,8 @@ import { authFetch } from "./../../auth"
 
 import noimg from '../../noimg.jpg';
 import { Link } from 'react-router-dom';
+import BASE_URL from '../../helpers/api_base'
+
 
 class User extends Component {
 	state = {
@@ -44,7 +46,7 @@ class User extends Component {
 
 
 	peticionGet = () => {
-		authFetch("/api/users/page", {
+		authFetch(`${BASE_URL}api/users/page`, {
 			method: 'POST',
 			body: JSON.stringify(this.state.page),
 		}).then(response => {
@@ -77,7 +79,7 @@ class User extends Component {
 
 		console.warn(data);
 
-		authFetch("/api/users/create", {
+		authFetch(`${BASE_URL}api/users/create`, {
 			method: 'POST',
 			body: data,
 		}).then(response => {
@@ -109,7 +111,7 @@ class User extends Component {
 		data.append('name', this.state.form.name)
 		data.append('role', this.state.form.role)
 
-		authFetch(`/api/users/${this.state.form.id}/edit`, {
+		authFetch(`${BASE_URL}api/users/${this.state.form.id}/edit`, {
 			method: 'PUT',
 			body: data,
 		}).then(response => {
@@ -133,7 +135,7 @@ class User extends Component {
 
 	peticionDelete = () => {
 
-	authFetch(`/api/users/${this.state.form.id}`, {
+	authFetch(`${BASE_URL}/api/users/${this.state.form.id}`, {
 			method: 'DELETE',
 		}).then(response => {
 			console.log("this is reponse, first aproach")
@@ -155,7 +157,7 @@ class User extends Component {
 	}
 	handleActiveUser = (id) => {
 
-		authFetch(`/api/users/${id}/active`, {
+		authFetch(`${BASE_URL}api/users/${id}/active`, {
 				method: 'GET',
 			}).then(response => {
 				console.log("this is reponse, first aproach")
@@ -227,7 +229,7 @@ class User extends Component {
 		this.setState({
 			page: searchPage
 		})
-		await authFetch("/api/users/page", {
+		await authFetch(`${BASE_URL}api/users/page`, {
 			method: 'POST',
 			body: JSON.stringify(searchPage),
 		}).then(response => {
