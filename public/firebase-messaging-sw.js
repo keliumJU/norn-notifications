@@ -4,7 +4,6 @@ importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");
 // eslint-disable-next-line no-undef
 importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
 
-importScripts('./firebaseInit.js')
 
 // Initialize the Firebase app in the service worker by passing the generated config
 const firebaseConfig = {
@@ -25,22 +24,7 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 
-// obtain messaging class from Firebase 
-const messaging = firebase.message(); 
-if ('serviceWorker' in navigator) {          
-   navigator.serviceWorker.register('./norn-notifications/service-worker.js')    
-   .then((registration) => { 
-      messaging.useServiceWorker(registration); 
-      // request notification permission and get token     
-      console.log('Registration successful, scope is:',  
-      registration.scope); 
-      //TODO: ask For Permission To Receive Notifications   
-   }).catch(function(err) { 
-      console.log('Service worker registration failed, error:', err); }); 
-}
-
-
-messaging.onBackgroundMessage(function (payload) {
+  messaging.onBackgroundMessage(function (payload) {
   console.log("Received background message ", payload);
 
   const notificationTitle = payload.notification.title;

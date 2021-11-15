@@ -9,8 +9,8 @@ function NavBar() {
 		<>
 			<Navbar bg="dark" variant="dark">
 				<Container>
-					<Link to='/norn-notifications'>
-					<Navbar.Brand href="#home">
+					<Link to='/'>
+						<Navbar.Brand href="#home">
 						<img
 							alt=""
 							src={logo}
@@ -22,16 +22,16 @@ function NavBar() {
 					</Navbar.Brand>
 					</Link>
 					<Nav className="mx-auto">
-						<Link to='/norn-notifications/login'>
+						<Link to='/login'>
 							<Nav.Link href="#login">Login</Nav.Link>
 						</Link>
-						<Link to='/norn-notifications/register'>
+						<Link to='/register'>
 							<Nav.Link href="#Register">Register</Nav.Link>
 						</Link>
-						<Link to='/norn-notifications/secret'>
+						<Link to='/secret'>
 							<Nav.Link href="#Secret">Secret</Nav.Link>
 						</Link>
-						<Link to='/norn-notifications/user'>
+						<Link to='/user'>
 								<Nav.Link href="#User">User</Nav.Link>
 						</Link>
 					</Nav>
