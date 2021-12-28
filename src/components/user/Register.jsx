@@ -1,90 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../.././App.css';
-import { Form, Button } from 'react-bootstrap';
-import API from '../../api/api'
-import '../.././App.css';
-import BASE_URL from '../../helpers/api_base'
+import '../.././static/css/RegisterStyle.css';
+import SingUpComponent from './SingUpComponent';
+import { Link } from 'react-router-dom';
 
-export default class Register extends React.Component {
+function Register() {
+	const [graduateTab, setGraduateTab] = useState(true);
+	const [companyTab, setCompanyTab] = useState(false);
 
-	state = {
-		nombre: '',
-		email: '',
-		password: '',
+	const handleGraduateTab = () => {
+		setGraduateTab(true);
+		setCompanyTab(false);
 	}
 
-
-	handleChange = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value
-		})
+	const handleCompanyTab = () => {
+		setCompanyTab(true);
+		setGraduateTab(false);
 	}
+	return (
+		<>
+			<div className="container register">
+				<div className="row">
+					<div className="col-md-3 register-left">
+						<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+						<h3>Welcome</h3>
+						<p>You are 30 seconds away from making a living</p>
+						<Link to='/login'>
+							<input type="submit" name="" value="Login" /><br />
+						</Link>
 
-	handleSubmit = async event => {
+					</div>
+					<div className="col-md-9 register-right">
+						<ul className="nav nav-tabs nav-justified" id="myTab" role="tablist">
+							<li className="nav-item">
+								<button className={graduateTab ? 'nav-link active' : 'nav-link'} id="home-tab" onClick={handleGraduateTab}>
+									Graduate
+								</button>
+							</li>
+							<li className="nav-item">
+								<button className={companyTab ? 'nav-link active' : 'nav-link'} id="profile-tab" onClick={handleCompanyTab}>
+									Company
+								</button>
+							</li>
+						</ul>
 
-		event.preventDefault();
-
-		const data = new FormData()
-		let token_fcm=""
-		token_fcm=localStorage.getItem('token_fcm');
-
-		data.append('username', this.state.nombre)
-		data.append('password', this.state.password)
-		data.append('email', this.state.email)
-		data.append('role', "graduate")
-		data.append('is_active', 0)
-		data.append('token_fcm', token_fcm)
-
-		console.log("data noti now")
-		console.log(token_fcm)
-		console.log(this.state.nombre)
-
-		fetch(`${BASE_URL}api/users/create`, {
-			method: 'POST',
-			body: data,
-		}).then(response => {
-			console.log("this is reponse, first aproach")
-			if (response.status === 401) {
-				console.log("Sorry you aren't authorized!")
-				return null
-			}
-			if (response.status === 403) {
-				console.log("Sorry you aren't authorized how admin!")
-				return null
-			}
-			return response.json()
-		}).then(response => {
-			if (response) {
-				console.log(response)
-			}
-		})
-	}
-
-	render() {
-		return (
-			<>
-				<Form method="POST" onSubmit={this.handleSubmit}>
-					<Form.Group className="mb-3" controlId="formBasicInput">
-						<Form.Label>Username</Form.Label>
-						<Form.Control type="text" name="nombre" placeholder="Username" onChange={this.handleChange} />
-					</Form.Group>
-					<Form.Group className="mb-3" controlId="formBasicInput">
-						<Form.Label>Email</Form.Label>
-						<Form.Control type="email" name="email" placeholder="Email" onChange={this.handleChange} />
-						<Form.Text className="text-muted">
-							We'll never share your email with anyone else.
-						</Form.Text>
-					</Form.Group>
-
-					<Form.Group className="mb-3" controlId="formBasicPassword">
-						<Form.Label>Password</Form.Label>
-						<Form.Control type="password" name="password" placeholder="Password" onChange={this.handleChange} />
-					</Form.Group>
-					<Button variant="primary" type="submit"  >
-						Submit
-					</Button>
-				</Form>
-			</>
-		)
-	}
+						<div className="tab-content" id="myTabContent">
+							{
+								graduateTab ?
+									<div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+										<h3 className="register-heading">Apply as a Graduate</h3>
+										<div className="row register-form">
+											<div className="abs-center">
+												<div className="col-md-6">
+													<SingUpComponent roleUser={'graduate'}/>
+												</div>
+											</div>
+										</div>
+									</div>
+									:
+									<div className="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+										<h3 className="register-heading">Apply as a Company</h3>
+										<div className="row register-form">
+											<div className="abs-center">
+												<div className="col-md-6">
+													<SingUpComponent roleUser={'company'}/>
+												</div>
+											</div>
+										</div>
+									</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }
+export default Register;

@@ -14,7 +14,7 @@ const ReactNotificationComponent = ({ title, body }) => {
     return (
       <div>
         <h4>{title}</h4>
-        <p>{body}</p>
+        <h6>{body}</h6>
       </div>
     );
   }
