@@ -1,10 +1,14 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { login } from "./../../auth"
 import '../.././App.css';
 import BASE_URL from '../../helpers/api_base'
 import { useHistory } from "react-router-dom";
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 const Login = (props) => {
 
 	const [username, setUsername] = useState('')
@@ -14,7 +18,7 @@ const Login = (props) => {
 	//const [state, setState] = useState({showToast:false})
 
 	let history = useHistory();
-	
+
 	const onSubmitClick = (e) => {
 		e.preventDefault()
 		let token_fcm = localStorage.getItem('token_fcm');
@@ -31,6 +35,7 @@ const Login = (props) => {
 			.then(token => {
 				if (token.access_token) {
 					login(token)
+					toast.success('Welcome To the Jungle ... Enjoy')
 					history.push('/')
 				}
 				else {

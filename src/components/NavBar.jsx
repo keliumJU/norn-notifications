@@ -8,6 +8,9 @@ import jwt from 'jwt-decode'
 import noimg from '../noimg.jpg';
 
 import logo from '../logo.svg';
+import logoNorn from '../logo_norn.png';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /*Dropdown notifications*/
 
@@ -21,9 +24,11 @@ import { useHistory } from "react-router-dom";
 
 // Importing toastify module
 import { toast } from 'react-toastify';
-
 // Import toastify css file
 import 'react-toastify/dist/ReactToastify.css';
+import { faBraille, faBriefcase, faBuilding, faBusinessTime, faBox, faUsers, faSignInAlt, faUserCircle, faUser, faChessPawn } from '@fortawesome/free-solid-svg-icons';
+
+toast.configure()
 
 const NavBar = ({ newNoti }) => {
 
@@ -72,24 +77,7 @@ const NavBar = ({ newNoti }) => {
 
 	const handleLogout = () => {
 		logout()
-		/*
-		const data = new FormData()
-		data.append('user_id', userId)
-
-		const url = `${BASE_URL}api/users/logout`
-		const userLogout = async () => {
-			try {
-				const response = await fetch(url,{
-					method:'POST',
-					body:data
-				});
-				const json = await response.json();
-			} catch (error) {
-				//console.log("error", error);
-			}
-		};
-		userLogout();
-		*/
+		toast.info('We hope you come back soon... Sayonara :)')
 		history.push('/login')
 	}
 
@@ -101,12 +89,12 @@ const NavBar = ({ newNoti }) => {
 					<Link className="navbar-brand" to='/'>
 						<img
 							alt=""
-							src={logo}
-							width="30"
-							height="30"
+							src={logoNorn}
+							width="40"
+							height="40"
 							className="d-inline-block align-top"
 						/>{' '}
-						React Bootstrap
+						Norn Notifications
 					</Link>
 					<Nav className="mx-auto">
 
@@ -118,9 +106,11 @@ const NavBar = ({ newNoti }) => {
 										role === 'admin' ?
 											<>
 												<Link className="nav-link" to='/user'>
-													User
+													<FontAwesomeIcon icon={faUsers} size="2x" />
+													Users
 												</Link>
 												<Link className="nav-link" to='/laboral_categories'>
+													<FontAwesomeIcon icon={faBox} size="2x" />
 													Laboral Categories
 												</Link>
 											</>
@@ -130,6 +120,7 @@ const NavBar = ({ newNoti }) => {
 									{
 										role === 'graduate' ?
 											<Link className="nav-link" to='/need_graduate'>
+												<FontAwesomeIcon icon={faBusinessTime} size="2x" />
 												Need Graduate
 											</Link>
 											:
@@ -138,6 +129,7 @@ const NavBar = ({ newNoti }) => {
 									{
 										role === 'company' ?
 											<Link className="nav-link" to='/job_offer'>
+												<FontAwesomeIcon icon={faBuilding} size="2x" />
 												Job Offer
 											</Link>
 											:
@@ -168,10 +160,16 @@ const NavBar = ({ newNoti }) => {
 								<>
 
 									<Link className="nav-link" to='/login'>
+										<FontAwesomeIcon icon={faSignInAlt} size="2x" />
 										Login
 									</Link>
 									<Link className="nav-link" to='/register'>
+										<FontAwesomeIcon icon={faUserCircle} size="2x" />
 										Register
+									</Link>
+									<Link className="nav-link" to='/about'>
+										<FontAwesomeIcon icon={faChessPawn} size="2x" />
+										About	
 									</Link>
 								</>
 						}

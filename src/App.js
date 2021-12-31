@@ -10,8 +10,12 @@ import ReactNotificationComponent from "./components/notifications/ReactNotifica
 import localforage from "localforage";
 
 import { Switch, Route, useLocation } from "react-router-dom";
-import Test1 from "./Test1";
-import Test2 from "./Test2";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
+
 function App() {
   const location = useLocation();
   //config show notifications
@@ -22,6 +26,7 @@ function App() {
 
 
   useEffect(() => {
+    /*
     console.log(location)
     let path = location.pathname
     path=path.toString()
@@ -34,6 +39,7 @@ function App() {
     }else{
       console.log("nothing")
     }
+    */
     //setShow(false) -> infinite loop
     //localStorage.setItem('logout_on',false)
     //if that is backgruond because i have to show the notification???
@@ -50,18 +56,25 @@ function App() {
         //setRefreshDropdown(true)
       }
     });
-  }, [location]);
+  });
 
   onMessageListener()
     .then((payload) => {
       //update the dropdown bell with lime color
-      setCountNewNoti(val=>(val+1));
+      //setCountNewNoti(val => (val + 1));
       localStorage.setItem('newNoti', true)
       setShow(true)
+      let title=payload.notification.title
+      let body=payload.notification.body
+      let msg=title+'\n'+body
+      toast.success(msg)
+
+      /*
       setNotification({
         title: payload.notification.title,
         body: payload.notification.body,
       });
+      */
       console.log(payload);
     })
     .catch((err) => console.log("failed: ", err));
@@ -86,10 +99,13 @@ navigator.serviceWorker.addEventListener('message', function (event) {
 });
 */
 
-
-  return (
-    <div className="App d-flex flex-column min-vh-100">
-      {show ? (
+  /*
+      //fot the search of location works the base code of the "Route" must be in App.js or foundation file
+        <Switch>
+          <Route exact path="/test1" component={Test1} />
+          <Route path="/test2" component={Test2} />
+        </Switch>
+     {show ? (
         <ReactNotificationComponent
           title={notification.title}
           body={notification.body}
@@ -97,14 +113,18 @@ navigator.serviceWorker.addEventListener('message', function (event) {
       ) : (
         <></>
       )}
-      <Notifications />
-      <NavBar newNoti={countNewNoti} />
+
+
+
+        */
+
+
+  return (
+    <div className="App d-flex flex-column min-vh-100">
+       <Notifications />
+      <NavBar newNoti={show} />
       <Routing />
       <Footer />
-      <Switch>
-        <Route exact path="/test1" component={Test1} />
-        <Route path="/test2" component={Test2} />
-      </Switch>
     </div>
 
   );

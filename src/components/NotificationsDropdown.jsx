@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../static/css/QuantityInput.css'
 import { NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { faBell, faBellSlash } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faBriefcase} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import localforage from "localforage";
@@ -36,7 +36,7 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 		}
 
 		if (token) {
-				
+
 			const user = jwt(token.access_token)
 
 			const url = `${BASE_URL}api/notifications/?userId=${user.id}&pageNumber=0`
@@ -63,7 +63,7 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 			};
 			fetchData();
 		}
-	}, [getNewNoti,readNoti]);
+	}, [getNewNoti, readNoti]);
 
 	const handleBellNoti = () => {
 		localStorage.setItem('newNoti', false);
@@ -80,15 +80,15 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 	//Select url to find the entity where an actor realized any action
 	const redirectToView = async noti => {
 		//object notification
-		if(noti.entity_type_id===3){
+		if (noti.entity_type_id === 3) {
 			const url = `/job_offer_view/${noti.entity_id}`
 			const win = window.open(url, "_blank");
 			win.focus();
-		}else if(noti.entity_type_id===4){
+		} else if (noti.entity_type_id === 4) {
 			const url = `/need_graduate_view/${noti.entity_id}`
 			const win = window.open(url, "_blank");
 			win.focus();
-		}else if(noti.entity_type_id===1){
+		} else if (noti.entity_type_id === 1) {
 			const url = `/user_account_view/${noti.entity_id}`
 			const win = window.open(url, "_blank");
 			win.focus();
@@ -99,7 +99,7 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 		setStatusNotification(userId, id)
 	}
 
-	const setStatusNotification= async (notifier_id, object_notification_id) => {
+	const setStatusNotification = async (notifier_id, object_notification_id) => {
 
 		let url = `${BASE_URL}api/notifications/revised`
 
@@ -108,13 +108,13 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 		data.append('notification_object_id', object_notification_id)
 
 		try {
-			const response = await fetch(url,{
-				method:'POST',
-				body:data
+			const response = await fetch(url, {
+				method: 'POST',
+				body: data
 			});
 			const json = await response.json();
-			if(json[1]===200){
-				readNoti===false?setReadNoti(true):setReadNoti(false)
+			if (json[1] === 200) {
+				readNoti === false ? setReadNoti(true) : setReadNoti(false)
 			}
 		} catch (error) {
 			//console.log("error", error);
@@ -123,7 +123,7 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 
 	return (
 		<>
-			<NavDropdown onClick={handleBellNoti}   title={<div style={styleDropdown}> <FontAwesomeIcon icon={faBell} color={boolGetNewNoti ? 'lime' : ''} />Notifications</div>} id="collasible-nav-dropdown">
+			<NavDropdown onClick={handleBellNoti} title={<div style={styleDropdown}> <FontAwesomeIcon icon={faBell} size="2x" color={boolGetNewNoti ? 'lime' : ''} /></div>} id="collasible-nav-dropdown">
 				<Link className="dropdown-item" to='/notification_list'>
 					<div className="notifications-header">
 						<header>
@@ -135,12 +135,13 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 				<NavDropdown.Divider />
 
 				{data.map(function (item, i) {
-					return (<NavDropdown.Item onClick={() => {redirectToView(item); markRead(item.id)}} key={i}>
-						<div className="notifications-item" style={item.status?{backgroundColor: "#ABEA7C"}:{backgroundColor: "#FAD02C"}}> <img src={item.img_user ? item.img_user : noimg} alt="img" />
+					return (<NavDropdown.Item onClick={() => { redirectToView(item); markRead(item.id) }} key={i}>
+						<div className="notifications-item" style={item.status ? { backgroundColor: "#ABEA7C" } : { backgroundColor: "#FAD02C" }}> <img src={item.img_user ? item.img_user : noimg} alt="img" />
 							<div className="text">
 								<h4>{item.created_on}</h4>
-								<p>{item.message}</p>
+								<p>{item.message.substring(0, 51)}</p>
 							</div>
+							<div>{item.message.length > 51 ? <span className="three-points">...</span> : <></>}</div>
 						</div>
 					</NavDropdown.Item>);
 				})}

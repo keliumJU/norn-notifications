@@ -3,3 +3,11 @@
     max-width: 500px;
     overflow-y: scroll;
 }
+
+.three-points{
+    margin: 0;
+    padding: 0;
+    font-size: large;
+    font-weight: 900;
+
+}

@@ -20,6 +20,9 @@ import UserProfileView from '../components/user_profile/UserProfileView'
 import NotificationList from '../components/NotificationsList/NotificationList'
 import JobOfferView from '../components/job_offer/JobOfferView'
 
+
+import About from '../components/about/About'
+
 import {useAuth} from "./../auth"
 import Role from "../helpers/role"
 import jwt from 'jwt-decode'
@@ -62,6 +65,7 @@ function Routing() {
 					<Route path="/" exact component={Home} />
 					<Route path="/login" exact component={Login} />
 					<Route path="/register" exact component={Register} />
+					<Route path="/about/" exact component={About} />
 					<PrivateRoute path="/secret" roles={[Role.Graduate, Role.Admin]} exact component={Secret} />
 					<PrivateRoute path="/user" roles={[Role.Admin]} exact component={User} />
 					<PrivateRoute path="/user_account_view/:id" roles={[Role.Admin]} exact component={UserAccountView} />
