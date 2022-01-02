@@ -4,7 +4,14 @@ import { Form, Button } from 'react-bootstrap';
 import '../.././App.css';
 import BASE_URL from '../../helpers/api_base'
 import ReactNotificationComponent from "../notifications/ReactNotification";
+// Importing toastify module
+import { toast } from 'react-toastify';
+// Import toastify css file
+import 'react-toastify/dist/ReactToastify.css';
 
+
+
+toast.configure()
 
 export default class SingUpComponent extends React.Component {
 
@@ -22,6 +29,7 @@ export default class SingUpComponent extends React.Component {
 			[e.target.name]: e.target.value
 		})
 	}
+
 
 	handleSubmit = async event => {
 
@@ -62,16 +70,17 @@ export default class SingUpComponent extends React.Component {
 				this.setState({ error_dict: aux_error_dict })
 				console.log(response.error_list)
 			} else {
-				this.setState({show:true})
+				//this.setState({ show: true })
+				let title="Successful Registration"
+				let body="Now you can Login ..."
+      			let msg=title+'\n'+body
+				toast.info(msg)
 			}
 
 		})
 	}
-
-	render() {
-		return (
-			<>
-				{this.state.show ? (
+	/*
+{this.state.show ? (
 					<ReactNotificationComponent
 						title={"Successful Registration"}
 						body={"Now you can Login ..."}
@@ -79,6 +88,11 @@ export default class SingUpComponent extends React.Component {
 				) : (
 					<></>
 				)}
+	*/
+
+	render() {
+		return (
+			<>
 				<Form method="POST" onSubmit={this.handleSubmit}>
 					<Form.Group className="mb-3" controlId="nombre">
 						<Form.Label>Username</Form.Label>

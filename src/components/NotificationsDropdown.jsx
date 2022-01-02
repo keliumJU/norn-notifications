@@ -8,9 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import localforage from "localforage";
 
 import BASE_URL from '../helpers/api_base'
+import NAME_DOMAIN from '../helpers/name_domain'
+
 import jwt from 'jwt-decode'
 
 import noimg from '../noimg.jpg';
+
 
 const NotificationsDropdown = ({ getNewNoti }) => {
 
@@ -81,15 +84,15 @@ const NotificationsDropdown = ({ getNewNoti }) => {
 	const redirectToView = async noti => {
 		//object notification
 		if (noti.entity_type_id === 3) {
-			const url = `/job_offer_view/${noti.entity_id}`
+			const url = `${NAME_DOMAIN}job_offer_view/${noti.entity_id}`
 			const win = window.open(url, "_blank");
 			win.focus();
 		} else if (noti.entity_type_id === 4) {
-			const url = `/need_graduate_view/${noti.entity_id}`
+			const url = `${NAME_DOMAIN}need_graduate_view/${noti.entity_id}`
 			const win = window.open(url, "_blank");
 			win.focus();
 		} else if (noti.entity_type_id === 1) {
-			const url = `/user_account_view/${noti.entity_id}`
+			const url = `${NAME_DOMAIN}user_account_view/${noti.entity_id}`
 			const win = window.open(url, "_blank");
 			win.focus();
 		}

@@ -26,7 +26,8 @@ import { useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
 // Import toastify css file
 import 'react-toastify/dist/ReactToastify.css';
-import { faBraille, faBriefcase, faBuilding, faBusinessTime, faBox, faUsers, faSignInAlt, faUserCircle, faUser, faChessPawn } from '@fortawesome/free-solid-svg-icons';
+import { faBraille, faBriefcase, faBuilding, faBusinessTime, faBox, faUsers, faSignInAlt, faUserCircle, faUser, faChessPawn, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import SingUpComponent from './user/SingUpComponent';
 
 toast.configure()
 
@@ -152,7 +153,8 @@ const NavBar = ({ newNoti }) => {
 										<Link className="dropdown-item" to="/user_profile"><strong>{userName}</strong></Link>
 										<NavDropdown.Divider />
 										<NavDropdown.Item onClick={handleLogout}>
-											<i className="fa fa-sign-out"></i> Logout
+											<FontAwesomeIcon icon={faSignOutAlt} />
+											Logout
 										</NavDropdown.Item>
 									</NavDropdown>
 								</>

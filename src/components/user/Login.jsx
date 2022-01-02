@@ -43,6 +43,9 @@ const Login = (props) => {
 					//console.log("Please type in correct username/password")
 				}
 			})
+			.catch(
+				error => { console.log("es un error de login", error) }
+			);
 	}
 
 	const handleUsernameChange = (e) => {

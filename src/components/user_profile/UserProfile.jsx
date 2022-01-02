@@ -81,8 +81,15 @@ function UserProfile() {
 				body: data,
 			});
 			const json = await response.json();
+			console.log(json)
+			if (json.msg === "Perfil de usuario creado Satisfactoriamente") {
+				console.log("here")
+				history.go(0)
+			} else {
+				console.log("Here fail")
+			}
 		} catch (error) {
-			//console.log("error", error);
+			console.log("error", error);
 		}
 	};
 
@@ -104,9 +111,17 @@ function UserProfile() {
 				method: 'PUT',
 				body: data,
 			});
+
 			const json = await response.json();
+			console.log(json)
+			if (json.msg === "Perfil de usuario actualizado Satisfactoriamente") {
+				console.log("here")
+				history.go(0)
+			} else {
+				console.log("Here fail")
+			}
 		} catch (error) {
-			//console.log("error", error);
+			console.log("error", error);
 		}
 	};
 	const handleUpdateUserProfile = () => {
@@ -121,7 +136,6 @@ function UserProfile() {
 				fetchUserProfileUpdate(user_id)
 			}
 		}
-		history.go(0)
 		setEditMode(false)
 	}
 
@@ -344,10 +358,10 @@ function UserProfile() {
 										{
 											editMode ?
 												<>
-												<div className="col-sm-6">
-													<button className="btn btn-info" onClick={handleUpdateUserProfile}>Guardar</button>
-												</div>
-												<div className="col-sm-6">
+													<div className="col-sm-6">
+														<button className="btn btn-info" onClick={handleUpdateUserProfile}>Guardar</button>
+													</div>
+													<div className="col-sm-6">
 														<button className="btn btn-info" onClick={handleCancelEditMode}>Cancelar</button>
 													</div>
 												</>
